@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t rokeno/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true rokeno/docker-react npm run test
